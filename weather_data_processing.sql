@@ -1,5 +1,5 @@
--- This sql script is used to process the weather data by reading the input from a csv file and then storing the result into a 
--- csv file for each processing task.
+-- This sql script is used to process the weather data by reading the input from a csv file, processing it with SQL, and then 
+-- storing the result into a csv file for each processing task.
 
 -- create a database
 CREATE DATABASE weather1;
@@ -34,8 +34,7 @@ INSERT INTO temp1(station, datefield, tmax)
 SELECT station, datefield, tmax FROM data1 WHERE tmax > -9999.0 ORDER BY tmax DESC;
 
 -- store the result into a csv file
--- we must change secure-file-priv="C:/ProgramData/MySQL/MySQL Server 5.7/Uploads" in 
--- "C:\ProgramData\MySQL\MySQL Server 5.7\my.ini" to secure-file-priv="" by using Notepad as admin.
+-- In the file my.ini, change: secure-file-priv="C:/ProgramData/MySQL/MySQL Server 5.7/Uploads", to secure-file-priv="". 
  
 SELECT * INTO OUTFILE 'C:\\data\\task1_result.csv'
     FIELDS TERMINATED BY ',' 
